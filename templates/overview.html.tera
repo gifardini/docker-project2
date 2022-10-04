@@ -1,0 +1,64 @@
+{% extends "base" %}
+
+{% block title %}Overview{% endblock title %}
+{% block description %}Sua dashboard{% endblock %}
+
+{% block content %}
+
+<header>
+  <hgroup>
+    <h1>Overview - {{ display_name }} {% if user.kind != "Admin" %} ({{ user.kind }}) {% endif %}</h1>
+    <p>
+      Boas vindas, <strong>{{ display_name }}</strong>, a sua dashboard.
+      {% if last_login %}
+        Seu último login foi
+        <span data-tooltip="{{ last_login | date(format="%d-%m-%Y às %H:%M:%S") }}">
+          {{ last_login | humanize }}
+        </span>
+      {% endif %}
+    </p>
+  </hgroup>
+  <nav>
+    <ul>
+      <li><a href="#metrics">Métricas</a></li>
+      {% if user.kind != "Driver" %}<li><a href="#actions">Ações</a></li>{% endif %}
+      <li><a href="#reports">Relatórios</a></li>
+    </ul>
+  </nav>
+</header>
+
+<hr/>
+
+<article>
+  <header>
+    <h2 id="metrics"><a href="#metrics">#</a> Métricas</h2>
+  </header>
+  <div class="grid">
+    {% block metrics %}
+    {% endblock metrics %}
+  </div>
+</article>
+
+{% block outer_actions %}
+<article>
+  <header>
+    <h2 id="actions"><a href="#actions">#</a> Ações</h2>
+  </header>
+  <div class="grid">
+    {% block actions %}
+    {% endblock actions %}
+  </div>
+</article>
+{% endblock outer_actions %}
+
+<article>
+  <header>
+    <h2 id="reports"><a href="#reports">#</a> Relatórios</h2>
+  </header>
+  <div class="grid">
+    {% block reports %}
+    {% endblock reports %}
+  </div>
+</article>
+
+{% endblock content %}

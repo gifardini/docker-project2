@@ -1,0 +1,24 @@
+// Variables
+@import "projetobd/colors";
+
+// Commons styles
+@import "projetobd/styles";
+
+// Light theme (Default)
+// Can be forced with data-theme="light"
+@import "projetobd/light";
+
+// Dark theme (Auto)
+// Automatically enabled if user has Dark mode enabled
+@import "projetobd/dark";
+@media only screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    @include dark;
+  }
+}
+
+// Dark theme (Forced)
+// Enabled if forced with data-theme="dark"
+[data-theme="dark"] {
+  @include dark;
+}

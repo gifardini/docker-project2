@@ -1,0 +1,29 @@
+{% extends "base" %}
+
+{% block title %}Log in{% endblock title %}
+{% block description %}Faça login pra usar o sistema{% endblock title %}
+
+{% block content%}
+
+<article class="slim">
+  <hgroup>
+    <h1>Log in</h1>
+    <p>Faça login para acessar o sistema</p>
+  </hgroup>
+  <form method="post">
+    <label>
+      Usuário
+      <input value="{{ prev | default(value="") }}" name="login" autocomplete="username" required autofocus />
+    </label>
+    <label>
+      Senha
+      <input type="password" name="password" autocomplete="current-password" required />
+    </label>
+    <button>
+      Log in
+    </button>
+  </form>
+  <a href="/accounts"><small>Lista de contas, pra sua conveniência</small></a>
+</article>
+
+{% endblock content %}
