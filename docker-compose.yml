@@ -22,7 +22,7 @@ services:
 
     healthcheck:
        test: [ "CMD", "pg_isready"]
-       interval: 5s
+       interval: 10s
        timeout: 5s
        retries: 5 
 
