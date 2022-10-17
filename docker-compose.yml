@@ -76,7 +76,12 @@ services:
         condition: service_healthy
 
     ports:
-      - "8000:8080"
+      #- "8000:8080"
+    - target: 8080
+      published: 8000
+      protocol: tcp
+      mode: host
+
  
     networks:
       - postgres-relatorio

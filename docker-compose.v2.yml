@@ -7,6 +7,10 @@ services:
 
     user: postgres
     
+    mem_limit: 512m
+    mem_reservation: 128M
+    cpus: 0.25
+
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -55,6 +59,10 @@ services:
       ROCKET_SECRET_KEY: ${SECRET_KEY}
       ROCKET_LOG_LEVEL: 'debug'
 
+    mem_limit: 512m
+    mem_reservation: 128M
+    cpus: 0.5
+
     cap_drop:
       - ALL
 
@@ -71,6 +79,14 @@ services:
     build: 
       context: .
       dockerfile: init.Dockerfile
+      shm_size: '4gb'
+
+    mem_limit: 512m
+    mem_reservation: 128M
+    cpus: 0.5
+
+    cap_drop:
+      - ALL
 
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
