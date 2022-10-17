@@ -1,5 +1,8 @@
 BEGIN;
 
+CREATE EXTENSION cube;
+CREATE EXTENSION earthdistance;
+
 CREATE TABLE airports (
     ident character(7) NOT NULL,
     type character(15),

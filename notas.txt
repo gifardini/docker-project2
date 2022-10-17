@@ -1,0 +1,14 @@
+#Usa o docker swarm (docker swarm init)
+
+# Limitar recursos
+ deploy:
+        resources:
+            limits:
+              cpus: 0.50
+              memory: 512M
+            reservations:
+              cpus: 0.25
+              memory: 128M
+
+
+docker stack deploy --compose-file docker-compose.yml projeto_stack
